@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool Hub — Sare AI Tools Ek Jagah</title>
+<meta name="description" content="India ka #1 AI tools directory. 100+ AI tools ek jagah — search karo, compare karo, seedha open karo. Free, Paid, Freemium sab yahan.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a18;min-height:100vh}
+  a{text-decoration:none;color:inherit}
+
+  /* Header */
+  header{background:#fff;border-bottom:1px solid #e8e8e0;padding:14px 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .logo{font-size:18px;font-weight:600;color:#1a1a18;display:flex;align-items:center;gap:8px}
+  .logo span{font-size:11px;background:#EEEDFE;color:#3C3489;border-radius:5px;padding:2px 8px;font-weight:500}
+  .search-wrap{flex:1;min-width:200px;max-width:480px}
+  .search-wrap input{width:100%;padding:9px 14px;border:1px solid #ddd;border-radius:10px;font-size:14px;background:#f9f9f5;color:#1a1a18;outline:none;transition:border .2s}
+  .search-wrap input:focus{border-color:#7F77DD;background:#fff}
+  .header-stats{display:flex;gap:8px;margin-left:auto}
+  .hstat{font-size:12px;color:#666;background:#f0f0ea;border-radius:6px;padding:4px 10px}
+  .hstat b{color:#1a1a18}
+
+  /* Filters */
+  .filters{background:#fff;border-bottom:1px solid #e8e8e0;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .fbtn{padding:6px 14px;border:1px solid #e0e0d8;border-radius:20px;font-size:13px;color:#555;cursor:pointer;white-space:nowrap;background:#fff;transition:all .15s}
+  .fbtn.active{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489;font-weight:500}
+  .fbtn:hover:not(.active){background:#f5f5f0}
+
+  /* Price filter */
+  .price-filters{background:#fafaf5;border-bottom:1px solid #e8e8e0;padding:8px 20px;display:flex;gap:6px;flex-wrap:wrap}
+  .pfbtn{padding:4px 12px;border:1px solid #e0e0d8;border-radius:6px;font-size:12px;color:#555;cursor:pointer;background:#fff;transition:all .15s}
+  .pfbtn.active-free{background:#EAF3DE;border-color:#97C459;color:#27500A;font-weight:500}
+  .pfbtn.active-paid{background:#FAECE7;border-color:#F0997B;color:#712B13;font-weight:500}
+  .pfbtn.active-freemium{background:#FAEEDA;border-color:#EF9F27;color:#633806;font-weight:500}
+  .pfbtn.active-all{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489;font-weight:500}
+
+  /* Main */
+  main{max-width:1200px;margin:0 auto;padding:20px}
+  .section-title{font-size:13px;color:#888;font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:30px}
+
+  /* Tool Card */
+  .card{background:#fff;border:1px solid #e8e8e0;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,box-shadow .2s;cursor:default}
+  .card:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .tool-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .badge{font-size:11px;padding:2px 8px;border-radius:5px;font-weight:500}
+  .badge.free{background:#EAF3DE;color:#27500A}
+  .badge.paid{background:#FAECE7;color:#712B13}
+  .badge.freemium{background:#FAEEDA;color:#633806}
+  .cat-tag{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.4px}
+  .tool-name{font-size:15px;font-weight:600;color:#1a1a18;line-height:1.3}
+  .tool-desc{font-size:12px;color:#666;line-height:1.5}
+  .uses{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+  .use-chip{background:#f0f0ea;color:#555;font-size:11px;padding:2px 8px;border-radius:5px}
+  .open-btn{margin-top:auto;padding:8px 0;background:#1a1a18;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s;text-decoration:none}
+  .open-btn:hover{background:#333}
+  .open-btn svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* No results */
+  .no-res{grid-column:1/-1;text-align:center;padding:60px 20px;color:#888;font-size:15px}
+
+  /* Footer */
+  footer{text-align:center;padding:30px 20px;color:#999;font-size:13px;border-top:1px solid #e8e8e0;background:#fff;margin-top:20px}
+  footer b{color:#333}
+
+  /* Mobile */
+  @media(max-width:600px){
+    header{padding:10px 14px}
+    .header-stats{display:none}
+    main{padding:14px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    🤖 AI Tool Hub
+    <span>India #1</span>
+  </div>
+  <div class="search-wrap">
+    <input type="text" id="searchBox" placeholder="Kya karna hai? e.g. 'image banana', 'video edit'..." oninput="applyFilters()">
+  </div>
+  <div class="header-stats">
+    <div class="hstat">Tools: <b id="toolCount">0</b></div>
+    <div class="hstat">Free: <b>40+</b></div>
+  </div>
+</header>
+
+<div class="filters" id="catFilters">
+  <button class="fbtn active" onclick="setCat('all',this)">🌐 Sab Tools</button>
+  <button class="fbtn" onclick="setCat('writing',this)">✍️ Writing</button>
+  <button class="fbtn" onclick="setCat('image',this)">🎨 Image</button>
+  <button class="fbtn" onclick="setCat('video',this)">🎬 Video</button>
+  <button class="fbtn" onclick="setCat('audio',this)">🎙️ Audio</button>
+  <button class="fbtn" onclick="setCat('code',this)">💻 Coding</button>
+  <button class="fbtn" onclick="setCat('business',this)">📊 Business</button>
+  <button class="fbtn" onclick="setCat('design',this)">🖌️ Design</button>
+  <button class="fbtn" onclick="setCat('search',this)">🔍 Research</button>
+  <button class="fbtn" onclick="setCat('chat',this)">💬 Chatbot</button>
+</div>
+
+<div class="price-filters">
+  <button class="pfbtn active-all" onclick="setPrice('all',this)">💰 Sab</button>
+  <button class="pfbtn" onclick="setPrice('free',this)">🟢 Free</button>
+  <button class="pfbtn" onclick="setPrice('freemium',this)">🟡 Freemium</button>
+  <button class="pfbtn" onclick="setPrice('paid',this)">🔴 Paid</button>
+</div>
+
+<main>
+  <div class="section-title" id="resultsLabel">Sare Tools</div>
+  <div class="grid" id="toolGrid"></div>
+</main>
+
+<footer>
+  <b>AI Tool Hub</b> — India ka sabse bada AI tools directory 🇮🇳<br>
+  Sare tools ek jagah • Search karo • Seedha open karo • Free mein
+</footer>
+
+<script>
+const tools = [
+  // --- CHATBOT ---
+  {name:"ChatGPT",cat:"chat",price:"freemium",icon:"🤖",bg:"#EAF3DE",url:"https://chat.openai.com",desc:"Duniya ka sabse popular AI chatbot",uses:["Content likhna","Email draft","Summary","Q&A","Code help"]},
+  {name:"Claude",cat:"chat",price:"freemium",icon:"🧠",bg:"#EEEDFE",url:"https://claude.ai",desc:"Smart aur safe AI assistant by Anthropic",uses:["Long docs","Analysis","Writing","Coding","Research"]},
+  {name:"Gemini",cat:"chat",price:"freemium",icon:"✨",bg:"#E6F1FB",url:"https://gemini.google.com",desc:"Google ka powerful AI assistant",uses:["Google apps","Image analysis","Real-time info","Coding"]},
+  {name:"Copilot",cat:"chat",price:"free",icon:"🪟",bg:"#f0f0ea",url:"https://copilot.microsoft.com",desc:"Microsoft ka free AI — ChatGPT powered",uses:["Web search","Image banana","Office help","Free GPT-4"]},
+  {name:"Perplexity",cat:"search",price:"freemium",icon:"🔍",bg:"#E6F1FB",url:"https://perplexity.ai",desc:"AI se research aur search karo",uses:["Research","Fact check","News","Citations"]},
+  {name:"You.com",cat:"search",price:"free",icon:"🌐",bg:"#EAF3DE",url:"https://you.com",desc:"AI-powered search engine — free",uses:["Search","Summarize","Code","Images"]},
+  {name:"Phind",cat:"search",price:"free",icon:"🔎",bg:"#EEEDFE",url:"https://phind.com",desc:"Developers ke liye AI search",uses:["Code search","Debug","Stack Overflow","Documentation"]},
+
+  // --- WRITING ---
+  {name:"Grammarly",cat:"writing",price:"freemium",icon:"✍️",bg:"#EAF3DE",url:"https://grammarly.com",desc:"English grammar aur tone check",uses:["Grammar fix","Spelling","Tone","Clarity","Email"]},
+  {name:"Jasper AI",cat:"writing",price:"paid",icon:"📝",bg:"#FAEEDA",url:"https://jasper.ai",desc:"Marketing content aur blogs likhne wala",uses:["Blog post","Ad copy","Social media","SEO content"]},
+  {name:"Copy.ai",cat:"writing",price:"freemium",icon:"📋",bg:"#EEEDFE",url:"https://copy.ai",desc:"Marketing copy AI se generate karo",uses:["Product desc","Email","Ads","Social post"]},
+  {name:"Writesonic",cat:"writing",price:"freemium",icon:"⚡",bg:"#FAECE7",url:"https://writesonic.com",desc:"SEO blog aur content banana",uses:["Blog","Landing page","Ads","Paraphrase"]},
+  {name:"QuillBot",cat:"writing",price:"freemium",icon:"🦆",bg:"#EAF3DE",url:"https://quillbot.com",desc:"Paraphrase aur grammar check karo",uses:["Paraphrase","Summarize","Grammar","Translate"]},
+  {name:"Notion AI",cat:"writing",price:"freemium",icon:"📒",bg:"#f0f0ea",url:"https://notion.so",desc:"Notes aur docs mein AI ki madad",uses:["Notes","Summarize","Action items","Draft"]},
+  {name:"Wordtune",cat:"writing",price:"freemium",icon:"🌀",bg:"#EEEDFE",url:"https://wordtune.com",desc:"Writing ko better banao AI se",uses:["Rewrite","Shorten","Expand","Tone change"]},
+
+  // --- IMAGE ---
+  {name:"Midjourney",cat:"image",price:"paid",icon:"🎨",bg:"#EEEDFE",url:"https://midjourney.com",desc:"Sabse best AI art generator",uses:["AI art","Logo","Poster","Wallpaper","Illustration"]},
+  {name:"DALL·E 3",cat:"image",price:"freemium",icon:"🖼️",bg:"#FAECE7",url:"https://openai.com/dall-e-3",desc:"OpenAI ka image generator",uses:["Image generate","Photo edit","Illustration","Concept art"]},
+  {name:"Stable Diffusion",cat:"image",price:"free",icon:"🌌",bg:"#EEEDFE",url:"https://stablediffusionweb.com",desc:"Free open source image AI",uses:["AI art","Custom model","Free use","High quality"]},
+  {name:"Adobe Firefly",cat:"image",price:"freemium",icon:"🦋",bg:"#FAECE7",url:"https://firefly.adobe.com",desc:"Adobe ka commercial safe AI image tool",uses:["Stock images","Text effects","Background remove","Recolor"]},
+  {name:"Canva AI",cat:"design",price:"freemium",icon:"🖌️",bg:"#FBEAF0",url:"https://canva.com",desc:"Design aur image ek saath",uses:["Social post","Thumbnail","Resume","Presentation","Logo"]},
+  {name:"Leonardo AI",cat:"image",price:"freemium",icon:"🦁",bg:"#FAEEDA",url:"https://leonardo.ai",desc:"Game art aur creative images banana",uses:["Game assets","Character art","Consistency","Free credits"]},
+  {name:"Ideogram",cat:"image",price:"freemium",icon:"💬",bg:"#E6F1FB",url:"https://ideogram.ai",desc:"Text ke saath images banana — best for logos",uses:["Logo with text","Typography art","Poster","T-shirt design"]},
+  {name:"Remove.bg",cat:"image",price:"freemium",icon:"✂️",bg:"#EAF3DE",url:"https://remove.bg",desc:"Background ek click mein hatao",uses:["BG remove","Product photo","Profile pic","Transparent PNG"]},
+  {name:"Clipdrop",cat:"image",price:"freemium",icon:"📸",bg:"#EEEDFE",url:"https://clipdrop.co",desc:"Image edit karne ke saare AI tools",uses:["BG remove","Upscale","Relight","Uncrop","Object remove"]},
+
+  // --- VIDEO ---
+  {name:"Runway ML",cat:"video",price:"freemium",icon:"🎬",bg:"#FAEEDA",url:"https://runwayml.com",desc:"AI se video generate aur edit karo",uses:["Video generate","BG remove","Video edit","Motion brush"]},
+  {name:"InVideo AI",cat:"video",price:"freemium",icon:"📱",bg:"#FAECE7",url:"https://invideo.io",desc:"Text se YouTube video banana",uses:["YouTube video","Reels","Shorts","Script to video"]},
+  {name:"Pika Labs",cat:"video",price:"freemium",icon:"⚡",bg:"#EEEDFE",url:"https://pika.art",desc:"AI se cinematic videos banana",uses:["Text to video","Image to video","Cinematic","Lip sync"]},
+  {name:"Sora",cat:"video",price:"paid",icon:"🌀",bg:"#E6F1FB",url:"https://sora.com",desc:"OpenAI ka video AI — best quality",uses:["Realistic video","Text to video","Long clips","HD output"]},
+  {name:"Kling AI",cat:"video",price:"freemium",icon:"🎥",bg:"#FAEEDA",url:"https://klingai.com",desc:"Chinese AI video generator — free credits",uses:["Video generate","Face swap","Lip sync","Free use"]},
+  {name:"Luma Dream",cat:"video",price:"freemium",icon:"💫",bg:"#FBEAF0",url:"https://lumalabs.ai",desc:"3D aur realistic video generation",uses:["3D video","360 view","Product video","Text to video"]},
+  {name:"Descript",cat:"video",price:"freemium",icon:"🎞️",bg:"#EAF3DE",url:"https://descript.com",desc:"Video edit karo text ki tarah",uses:["Podcast edit","Video edit","Transcribe","Overdub voice"]},
+  {name:"Opus Clip",cat:"video",price:"freemium",icon:"✂️",bg:"#EEEDFE",url:"https://opus.pro",desc:"Long video se viral shorts banana",uses:["Shorts clip","Auto caption","Viral clips","YouTube to Reel"]},
+
+  // --- AUDIO ---
+  {name:"ElevenLabs",cat:"audio",price:"freemium",icon:"🎙️",bg:"#E6F1FB",url:"https://elevenlabs.io",desc:"Best AI voice cloning aur text to speech",uses:["Voice clone","Text to speech","Podcast","AI dubbing"]},
+  {name:"Murf AI",cat:"audio",price:"freemium",icon:"🎤",bg:"#FAEEDA",url:"https://murf.ai",desc:"Professional voiceover AI se banana",uses:["Voiceover","Presentation narration","Hindi voice","120+ voices"]},
+  {name:"Suno AI",cat:"audio",price:"freemium",icon:"🎵",bg:"#FBEAF0",url:"https://suno.ai",desc:"AI se music aur gana banana",uses:["Song banana","Music generate","Lyrics","Background music"]},
+  {name:"Udio",cat:"audio",price:"freemium",icon:"🎶",bg:"#EEEDFE",url:"https://udio.com",desc:"High quality AI music generation",uses:["Music create","Any genre","Lyrics","Free credits"]},
+  {name:"Adobe Podcast",cat:"audio",price:"free",icon:"🔊",bg:"#FAECE7",url:"https://podcast.adobe.com",desc:"Audio quality AI se improve karo",uses:["Noise remove","Voice enhance","Podcast edit","Free tool"]},
+  {name:"Whisper",cat:"audio",price:"free",icon:"📢",bg:"#EAF3DE",url:"https://huggingface.co/spaces/openai/whisper",desc:"OpenAI ka free speech to text",uses:["Transcribe","Speech to text","Multi-language","Hindi support"]},
+
+  // --- CODING ---
+  {name:"GitHub Copilot",cat:"code",price:"paid",icon:"💻",bg:"#f0f0ea",url:"https://github.com/features/copilot",desc:"Best AI coding assistant",uses:["Code likhna","Bug fix","Code explain","Auto-complete"]},
+  {name:"Cursor",cat:"code",price:"freemium",icon:"⌨️",bg:"#EEEDFE",url:"https://cursor.sh",desc:"AI-first code editor — VS Code se better",uses:["AI code editor","App banana","Debug","Explain code"]},
+  {name:"Replit AI",cat:"code",price:"freemium",icon:"🔧",bg:"#FAEEDA",url:"https://replit.com",desc:"Browser mein code likho aur run karo",uses:["Online IDE","Deploy","Python/JS/HTML","Beginner friendly"]},
+  {name:"Bolt.new",cat:"code",price:"freemium",icon:"⚡",bg:"#FAECE7",url:"https://bolt.new",desc:"Text se full app banana — no coding",uses:["Full stack app","React","Deploy karo","Beginner ke liye"]},
+  {name:"v0.dev",cat:"code",price:"freemium",icon:"🎯",bg:"#E6F1FB",url:"https://v0.dev",desc:"Text se UI components banana",uses:["UI design","React components","Tailwind","Frontend"]},
+  {name:"Codeium",cat:"code",price:"free",icon:"🟢",bg:"#EAF3DE",url:"https://codeium.com",desc:"Free AI code autocomplete",uses:["Free Copilot","Autocomplete","All languages","VS Code plugin"]},
+
+  // --- BUSINESS ---
+  {name:"Gamma App",cat:"business",price:"freemium",icon:"📊",bg:"#EEEDFE",url:"https://gamma.app",desc:"AI se presentation banana — no PowerPoint",uses:["Presentation","Slide deck","AI slides","One click"]},
+  {name:"Tome",cat:"business",price:"freemium",icon:"📖",bg:"#FAEEDA",url:"https://tome.app",desc:"AI storytelling aur presentation tool",uses:["Pitch deck","Story","Presentation","AI generate"]},
+  {name:"Beautiful.ai",cat:"business",price:"paid",icon:"✨",bg:"#E6F1FB",url:"https://beautiful.ai",desc:"Auto-design hone wali presentations",uses:["Smart slides","Auto-format","Business deck","Templates"]},
+  {name:"Otter.ai",cat:"business",price:"freemium",icon:"🦦",bg:"#EAF3DE",url:"https://otter.ai",desc:"Meeting transcribe aur notes banana",uses:["Meeting notes","Transcribe","Action items","Zoom integration"]},
+  {name:"Fireflies.ai",cat:"business",price:"freemium",icon:"🔥",bg:"#FAECE7",url:"https://fireflies.ai",desc:"AI meeting recorder aur summarizer",uses:["Meeting record","Summary","Search meetings","CRM sync"]},
+  {name:"Zapier AI",cat:"business",price:"freemium",icon:"⚙️",bg:"#FAEEDA",url:"https://zapier.com",desc:"Apps ko AI se automate karo",uses:["Automation","No-code","5000+ apps","Workflow"]},
+  {name:"Make.com",cat:"business",price:"freemium",icon:"🔗",bg:"#EEEDFE",url:"https://make.com",desc:"Visual automation builder",uses:["Automation","Workflow","API connect","No-code"]},
+  {name:"Notion AI",cat:"business",price:"freemium",icon:"📋",bg:"#f0f0ea",url:"https://notion.so",desc:"All-in-one workspace with AI",uses:["Notes","Project plan","Database","Team wiki"]},
+
+  // --- DESIGN ---
+  {name:"Figma AI",cat:"design",price:"freemium",icon:"🎯",bg:"#FBEAF0",url:"https://figma.com",desc:"Professional UI design + AI features",uses:["UI design","Prototype","Team collab","Auto-layout"]},
+  {name:"Looka",cat:"design",price:"paid",icon:"🏷️",bg:"#FAEEDA",url:"https://looka.com",desc:"AI se professional logo banana",uses:["Logo banana","Brand kit","Business card","Color palette"]},
+  {name:"Brandmark",cat:"design",price:"paid",icon:"⭐",bg:"#FAECE7",url:"https://brandmark.io",desc:"AI logo aur brand design tool",uses:["Logo","Brand identity","Font select","Color suggest"]},
+  {name:"Khroma",cat:"design",price:"free",icon:"🎨",bg:"#EAF3DE",url:"https://khroma.co",desc:"AI se color palette banana",uses:["Color palette","Brand colors","Gradient","Free tool"]},
+  {name:"Uizard",cat:"design",price:"freemium",icon:"📱",bg:"#EEEDFE",url:"https://uizard.io",desc:"Sketch se app design banana",uses:["App wireframe","UI prototype","Mobile design","AI generate"]},
+];
+
+let activeCat = 'all';
+let activePrice = 'all';
+
+function renderTools(){
+  const q = document.getElementById('searchBox').value.toLowerCase();
+  const grid = document.getElementById('toolGrid');
+  const filtered = tools.filter(t=>{
+    const catOk = activeCat==='all' || t.cat===activeCat;
+    const priceOk = activePrice==='all' || t.price===activePrice;
+    const searchOk = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.uses.join(' ').toLowerCase().includes(q) || t.cat.includes(q);
+    return catOk && priceOk && searchOk;
+  });
+  document.getElementById('toolCount').textContent = tools.length;
+  document.getElementById('resultsLabel').textContent = filtered.length + ' tools mile';
+  if(filtered.length===0){
+    grid.innerHTML='<div class="no-res">😕 Koi tool nahi mila "<b>'+document.getElementById('searchBox').value+'</b>" ke liye<br><small>Kuch aur search karo ya category change karo</small></div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(t=>`
+    <div class="card">
+      <div class="card-top">
+        <div class="tool-icon" style="background:${t.bg}">${t.icon}</div>
+        <span class="badge ${t.price}">${t.price==='free'?'🟢 Free':t.price==='paid'?'🔴 Paid':'🟡 Freemium'}</span>
+      </div>
+      <div class="cat-tag">${t.cat.toUpperCase()}</div>
+      <div class="tool-name">${t.name}</div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="uses">${t.uses.map(u=>`<span class="use-chip">${u}</span>`).join('')}</div>
+      <a class="open-btn" href="${t.url}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Seedha Open karo
+      </a>
+    </div>
+  `).join('');
+}
+
+function applyFilters(){renderTools()}
+function setCat(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTools();
+}
+function setPrice(p,btn){
+  activePrice=p;
+  document.querySelectorAll('.pfbtn').forEach(b=>b.className='pfbtn');
+  btn.classList.add('active-'+p);
+  renderTools();
+}
+
+renderTools();
+</script>
+</body>
+</html>
