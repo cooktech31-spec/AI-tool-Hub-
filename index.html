@@ -124,7 +124,70 @@
 </footer>
 
 <script>
-const tools = [
+const tools = [// --- NAYE CHATBOT / AI ---
+{name:"Grok AI",cat:"chat",price:"freemium",icon:"⚡",bg:"#F1EFE8",url:"https://grok.com",desc:"Elon Musk ka AI — real time X/Twitter data ke saath",uses:["Real-time news","Humor","Coding","Image analyze","Web search"]},
+{name:"DeepSeek",cat:"chat",price:"free",icon:"🔬",bg:"#E6F1FB",url:"https://chat.deepseek.com",desc:"China ka powerful free AI — ChatGPT se sasta",uses:["Coding","Math","Research","Long docs","Free use"]},
+{name:"Kimi AI",cat:"chat",price:"free",icon:"🌙",bg:"#EEEDFE",url:"https://kimi.ai",desc:"China ka Moonshot AI — bahut lamba context",uses:["Long PDF read","Research","Coding","Free GPT-4 level"]},
+{name:"Qwen AI",cat:"chat",price:"free",icon:"🐉",bg:"#FAEEDA",url:"https://chat.qwenlm.ai",desc:"Alibaba ka powerful free AI assistant",uses:["Coding","Writing","Math","Multilingual","Free"]},
+{name:"Meta AI",cat:"chat",price:"free",icon:"🦙",bg:"#E6F1FB",url:"https://meta.ai",desc:"Meta ka free AI — WhatsApp/Instagram mein bhi",uses:["Image generate","Chat","WhatsApp me use","Free Llama"]},
+{name:"Mistral AI",cat:"chat",price:"freemium",icon:"💨",bg:"#EAF3DE",url:"https://chat.mistral.ai",desc:"Europe ka best open source AI",uses:["Coding","Writing","Fast response","Privacy focused"]},
+{name:"HuggingChat",cat:"chat",price:"free",icon:"🤗",bg:"#FAEEDA",url:"https://huggingface.co/chat",desc:"100% free AI — multiple models ek jagah",uses:["Free GPT","Multiple models","No login","Open source"]},
+{name:"Pi AI",cat:"chat",price:"free",icon:"🥧",bg:"#FBEAF0",url:"https://pi.ai",desc:"Personal AI — emotional support aur conversation",uses:["Daily chat","Mental support","Friendly AI","Motivation"]},
+{name:"Character AI",cat:"chat",price:"freemium",icon:"🎭",bg:"#EEEDFE",url:"https://character.ai",desc:"Kisi bhi character se baat karo AI se",uses:["Roleplay","Celebrity chat","Practice conversation","Fun"]},
+{name:"Poe",cat:"chat",price:"freemium",icon:"📡",bg:"#E6F1FB",url:"https://poe.com",desc:"Ek jagah sare AI — GPT4, Claude, Gemini sab",uses:["Multiple AI","Compare","One subscription","Bot banana"]},
+
+// --- NAYE IMAGE TOOLS ---
+{name:"Flux AI",cat:"image",price:"freemium",icon:"🌊",bg:"#E6F1FB",url:"https://blackforestlabs.ai",desc:"2024 ka best image AI — Midjourney se better",uses:["Photorealistic","Fast generate","High quality","Free credits"]},
+{name:"Imagen 3",cat:"image",price:"freemium",icon:"🖼️",bg:"#EAF3DE",url:"https://aitestkitchen.withgoogle.com",desc:"Google ka latest image generator",uses:["Photorealistic","Text in image","Google quality","Creative art"]},
+{name:"Playground AI",cat:"image",price:"free",icon:"🎠",bg:"#FBEAF0",url:"https://playground.com",desc:"Free mein unlimited images banana",uses:["Free unlimited","Social media posts","Edit photos","Templates"]},
+{name:"NightCafe",cat:"image",price:"freemium",icon:"🌃",bg:"#EEEDFE",url:"https://creator.nightcafe.studio",desc:"AI art banana multiple styles mein",uses:["Art styles","Daily free credits","Print karo","Community"]},
+{name:"Stockimg AI",cat:"image",price:"freemium",icon:"📦",bg:"#FAEEDA",url:"https://stockimg.ai",desc:"Stock images, logos, posters AI se banana",uses:["Stock photo","Logo","Poster","Book cover","Wallpaper"]},
+{name:"Pixlr AI",cat:"image",price:"freemium",icon:"✂️",bg:"#EAF3DE",url:"https://pixlr.com",desc:"Online Photoshop — AI editing tools ke saath",uses:["Photo edit","BG remove","Filters","Collage","Free tool"]},
+{name:"Fotor AI",cat:"image",price:"freemium",icon:"📷",bg:"#FAECE7",url:"https://fotor.com",desc:"AI photo editor aur enhancer",uses:["Photo enhance","Face retouch","BG change","ID photo","HDR"]},
+{name:"Artbreeder",cat:"image",price:"freemium",icon:"🧬",bg:"#EEEDFE",url:"https://artbreeder.com",desc:"Images ko mix karke naya banao",uses:["Face mix","Portrait","Landscape","Creative art","Unique style"]},
+
+// --- NAYE VIDEO TOOLS ---
+{name:"Veo 3",cat:"video",price:"paid",icon:"🎬",bg:"#EAF3DE",url:"https://deepmind.google/veo",desc:"Google ka latest video AI — sound ke saath",uses:["HD video","Sound generate","Cinematic","Best quality 2025"]},
+{name:"Hailuo AI",cat:"video",price:"freemium",icon:"🌊",bg:"#E6F1FB",url:"https://hailuoai.video",desc:"China ka MiniMax video AI — viral ho raha hai",uses:["Realistic video","Free credits","Fast generate","Lip sync"]},
+{name:"Vidu AI",cat:"video",price:"freemium",icon:"📹",bg:"#FAEEDA",url:"https://vidu.io",desc:"China ka high quality video generator",uses:["Text to video","Image to video","4K quality","Free tier"]},
+{name:"HeyGen",cat:"video",price:"freemium",icon:"🧑‍💼",bg:"#EEEDFE",url:"https://heygen.com",desc:"AI avatar se professional video banana",uses:["Avatar video","Lip sync","Translate video","Marketing video"]},
+{name:"Synthesia",cat:"video",price:"paid",icon:"🎥",bg:"#FAECE7",url:"https://synthesia.io",desc:"AI presenter ke saath training videos banana",uses:["Corporate video","Training","Multilingual","No camera needed"]},
+{name:"D-ID",cat:"video",price:"freemium",icon:"🪪",bg:"#E6F1FB",url:"https://d-id.com",desc:"Photo ko talking video mein convert karo",uses:["Photo to video","AI avatar","Lip sync","Presentation"]},
+{name:"Pictory AI",cat:"video",price:"paid",icon:"🎞️",bg:"#FAEEDA",url:"https://pictory.ai",desc:"Blog post se automatic video banana",uses:["Blog to video","Auto captions","Stock footage","YouTube"]},
+{name:"Fliki AI",cat:"video",price:"freemium",icon:"💫",bg:"#FBEAF0",url:"https://fliki.ai",desc:"Text se video — Hindi voice support ke saath",uses:["Hindi voiceover","Reels","Shorts","Text to video","Blog to video"]},
+{name:"Domo AI",cat:"video",price:"freemium",icon:"🎌",bg:"#EEEDFE",url:"https://domoai.app",desc:"Video ko anime style mein convert karo",uses:["Anime style","Cartoon video","Style transfer","Viral content"]},
+{name:"Higgsfield AI",cat:"video",price:"freemium",icon:"🌀",bg:"#EAF3DE",url:"https://higgsfield.ai",desc:"Cinematic AI video — Hollywood style",uses:["Cinematic shots","Camera movement","Short film","Creative video"]},
+
+// --- NAYE AUDIO TOOLS ---
+{name:"PlayHT",cat:"audio",price:"freemium",icon:"▶️",bg:"#E6F1FB",url:"https://play.ht",desc:"Ultra realistic AI voice generation",uses:["Voice clone","900+ voices","Hindi voice","Podcast","Audiobook"]},
+{name:"Resemble AI",cat:"audio",price:"freemium",icon:"🔊",bg:"#EEEDFE",url:"https://resemble.ai",desc:"Real-time voice cloning aur dubbing",uses:["Voice clone","Real-time","Dubbing","Custom voice","API"]},
+{name:"Boomy",cat:"audio",price:"freemium",icon:"🎸",bg:"#FAEEDA",url:"https://boomy.com",desc:"30 second mein original music banana",uses:["Music create","Royalty free","Spotify upload","Background music"]},
+{name:"AIVA",cat:"audio",price:"freemium",icon:"🎻",bg:"#FBEAF0",url:"https://aiva.ai",desc:"Classical aur cinematic AI music composer",uses:["Film music","Game soundtrack","Classical","Royalty free"]},
+{name:"Beatoven AI",cat:"audio",price:"freemium",icon:"🥁",bg:"#EAF3DE",url:"https://beatoven.ai",desc:"Indian startup — mood se music banana",uses:["Mood music","Indian startup","Video BGM","Podcast music","Free tier"]},
+{name:"Krisp AI",cat:"audio",price:"freemium",icon:"🎙️",bg:"#E6F1FB",url:"https://krisp.ai",desc:"Call mein background noise bilkul khatam karo",uses:["Noise cancel","Meeting","Work from home","Free plan"]},
+{name:"Podcastle",cat:"audio",price:"freemium",icon:"🏰",bg:"#EEEDFE",url:"https://podcastle.ai",desc:"Podcast record, edit aur publish ek jagah",uses:["Podcast","Record","Edit","Transcribe","Publish"]},
+{name:"Cleanvoice",cat:"audio",price:"freemium",icon:"🧹",bg:"#FAEEDA",url:"https://cleanvoice.ai",desc:"Podcast se filler words aur silence hatao",uses:["Podcast edit","Remove umm","Silence cut","Auto edit"]},
+
+// --- NAYE CODING TOOLS ---
+{name:"Lovable.dev",cat:"code",price:"freemium",icon:"💝",bg:"#FBEAF0",url:"https://lovable.dev",desc:"Text se full stack web app banana — no code",uses:["Full app banana","React","Supabase","Deploy","Beginner"]},
+{name:"Windsurf",cat:"code",price:"freemium",icon:"🏄",bg:"#E6F1FB",url:"https://codeium.com/windsurf",desc:"AI code editor — Cursor ka competitor",uses:["AI editor","Code write","Debug","Explain","Free tier"]},
+{name:"Tabnine",cat:"code",price:"freemium",icon:"⌨️",bg:"#EAF3DE",url:"https://tabnine.com",desc:"Private AI code completion — data secure",uses:["Autocomplete","Private AI","All IDEs","Enterprise safe"]},
+{name:"Perplexity Labs",cat:"code",price:"free",icon:"🧪",bg:"#EEEDFE",url:"https://labs.perplexity.ai",desc:"Free mein latest AI models try karo",uses:["Free Llama","Model test","Fast","No login needed"]},
+
+// --- NAYE BUSINESS TOOLS ---
+{name:"Elicit AI",cat:"business",price:"freemium",icon:"📚",bg:"#EAF3DE",url:"https://elicit.com",desc:"Research papers AI se analyze karo",uses:["Research papers","Literature review","Summarize","Academic"]},
+{name:"Consensus AI",cat:"search",price:"freemium",icon:"🔍",bg:"#E6F1FB",url:"https://consensus.app",desc:"Scientific research ka AI search engine",uses:["Science research","Evidence based","Citations","Academic"]},
+{name:"Julius AI",cat:"business",price:"freemium",icon:"📊",bg:"#FAEEDA",url:"https://julius.ai",desc:"Data analysis — Excel/CSV AI se samjho",uses:["Data analysis","Excel","CSV","Charts","Python auto"]},
+{name:"Gamma AI",cat:"business",price:"freemium",icon:"⚡",bg:"#EEEDFE",url:"https://gamma.app",desc:"AI se presentation ek minute mein banana",uses:["Presentation","One click","Beautiful slides","Share link"]},
+{name:"SlidesAI",cat:"business",price:"freemium",icon:"📑",bg:"#FBEAF0",url:"https://slidesai.io",desc:"Google Slides mein AI se presentation banana",uses:["Google Slides","Auto design","Text to slides","Templates"]},
+{name:"Framer AI",cat:"design",price:"freemium",icon:"🖥️",bg:"#E6F1FB",url:"https://framer.com",desc:"AI se professional website banana — no code",uses:["Website banana","Landing page","Portfolio","Auto design","Publish"]},
+{name:"Durable AI",cat:"business",price:"freemium",icon:"🏗️",bg:"#EAF3DE",url:"https://durable.co",desc:"30 second mein business website banana",uses:["Business website","Auto generate","CRM","Invoice","Fast"]},
+
+// --- INDIAN AI TOOLS ---
+{name:"Krutrim AI",cat:"chat",price:"freemium",icon:"🇮🇳",bg:"#FAEEDA",url:"https://krutrim.com",desc:"Ola ka Indian AI — Hindi aur regional languages",uses:["Hindi chat","Indian context","Regional languages","Ola made"]},
+{name:"Sarvam AI",cat:"audio",price:"freemium",icon:"🇮🇳",bg:"#FAECE7",url:"https://sarvam.ai",desc:"Indian startup — 10 Indian languages mein AI",uses:["Hindi voice","Regional AI","Translation","Indian startup","Speech"]},
+{name:"Bhashini",cat:"audio",price:"free",icon:"🇮🇳",bg:"#EAF3DE",url:"https://bhashini.gov.in",desc:"India Govt ka free AI — 22 Indian languages",uses:["22 languages","Govt made","Free","Translation","Voice"]},
+{name:"Narakeet",cat:"audio",price:"freemium",icon:"🎤",bg:"#EEEDFE",url:"https://narakeet.com",desc:"Hindi aur Indian languages mein voiceover banana",uses:["Hindi voice","Indian accent","Video narration","Education"]},
   // --- CHATBOT ---
   {name:"ChatGPT",cat:"chat",price:"freemium",icon:"🤖",bg:"#EAF3DE",url:"https://chat.openai.com",desc:"Duniya ka sabse popular AI chatbot",uses:["Content likhna","Email draft","Summary","Q&A","Code help"]},
   {name:"Claude",cat:"chat",price:"freemium",icon:"🧠",bg:"#EEEDFE",url:"https://claude.ai",desc:"Smart aur safe AI assistant by Anthropic",uses:["Long docs","Analysis","Writing","Coding","Research"]},
