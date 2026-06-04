@@ -134,7 +134,56 @@
 </footer>
 
 <script>
-const tools = [// --- NAYE CHATBOT / AI ---
+const tools = [// --- NAYE CHATBOT / AI ---// --- 
+{name:"Firecut",cat:"video",price:"freemium",icon:"🔥",bg:"#FAECE7",url:"https://firecut.io",desc:"YouTube videos se silence aur filler words auto remove karo",uses:["Silence remove","Filler cut","YouTube editor","Auto edit","Fast"]},
+{name:"Notch",cat:"design",price:"paid",icon:"🎨",bg:"#EEEDFE",url:"https://notch.one",desc:"Real-time motion graphics aur live visuals banana",uses:["Motion graphics","Live events","3D visuals","Broadcast","VJ tool"]},
+{name:"Stitch",cat:"video",price:"freemium",icon:"🧵",bg:"#EAF3DE",url:"https://stitch.withgoogle.com",desc:"Google ka AI video creation tool",uses:["Video create","AI generate","Google tool","Creative video"]},
+
+// --- HOT NEW VIDEO TOOLS ---
+{name:"CapCut AI",cat:"video",price:"freemium",icon:"✂️",bg:"#F1EFE8",url:"https://capcut.com",desc:"India ka sabse popular video editor — AI features ke saath",uses:["Reels banana","Auto caption","Background remove","Templates","Trending"]},
+{name:"Submagic",cat:"video",price:"freemium",icon:"💬",bg:"#EEEDFE",url:"https://submagic.co",desc:"Shorts aur Reels ke liye auto captions — viral style",uses:["Auto captions","Shorts","Reels","Emojis add","Trending fonts"]},
+{name:"Captions AI",cat:"video",price:"freemium",icon:"🎬",bg:"#EAF3DE",url:"https://captions.ai",desc:"AI se apne videos mein auto captions lagao",uses:["Auto captions","Eye contact fix","Filler remove","Reels","Mobile app"]},
+{name:"Wisecut",cat:"video",price:"freemium",icon:"✂️",bg:"#FAEEDA",url:"https://wisecut.video",desc:"Long video se best parts auto cut karo",uses:["Auto cut","Podcast edit","Remove silence","Background music","Fast edit"]},
+{name:"Vizard AI",cat:"video",price:"freemium",icon:"🎯",bg:"#E6F1FB",url:"https://vizard.ai",desc:"Long video se viral clips automatically nikalo",uses:["Clip extract","YouTube to Shorts","Auto highlight","Repurpose content"]},
+{name:"Munch AI",cat:"video",price:"freemium",icon:"🍔",bg:"#FBEAF0",url:"https://getmunch.com",desc:"Podcast aur webinar se viral clips banana",uses:["Clip extract","Auto captions","Social media","Repurpose","Trending clips"]},
+{name:"Hedra AI",cat:"video",price:"freemium",icon:"🗣️",bg:"#EEEDFE",url:"https://hedra.com",desc:"Photo se talking character video banana",uses:["Talking photo","Lip sync","Character video","AI avatar","Viral content"]},
+{name:"Haiper AI",cat:"video",price:"freemium",icon:"⚡",bg:"#EAF3DE",url:"https://haiper.ai",desc:"Fast aur free AI video generator",uses:["Text to video","Image to video","Fast generate","Free credits","HD quality"]},
+
+// --- HOT NEW IMAGE TOOLS ---
+{name:"Recraft AI",cat:"image",price:"freemium",icon:"🎨",bg:"#E6F1FB",url:"https://recraft.ai",desc:"Vector art aur brand images banana — designers ke liye",uses:["Vector art","Brand design","Icon set","Illustration","SVG export"]},
+{name:"Magnific AI",cat:"image",price:"paid",icon:"🔍",bg:"#FAEEDA",url:"https://magnific.ai",desc:"Image upscale karo — 10x quality improve karo",uses:["Upscale","Enhance","4K quality","Photo restore","Detail add"]},
+{name:"Krea AI",cat:"image",price:"freemium",icon:"✨",bg:"#EEEDFE",url:"https://krea.ai",desc:"Real-time AI image generation — type karo instantly dekho",uses:["Real-time AI","Image enhance","Live generate","Creative tool","Fast"]},
+{name:"Flair AI",cat:"image",price:"freemium",icon:"💅",bg:"#FBEAF0",url:"https://flair.ai",desc:"Product photography AI se banana — studio quality",uses:["Product photo","Studio quality","E-commerce","Brand shoot","No camera"]},
+{name:"Dzine AI",cat:"image",price:"freemium",icon:"🛋️",bg:"#EAF3DE",url:"https://dzine.ai",desc:"Interior design aur room decoration AI se",uses:["Interior design","Room decor","Renovation idea","3D render","Home design"]},
+{name:"Stylar AI",cat:"image",price:"freemium",icon:"👗",bg:"#FBEAF0",url:"https://stylar.ai",desc:"Image ko kisi bhi style mein convert karo",uses:["Style transfer","Anime","Realistic","Cartoon","Brand consistent"]},
+
+// --- HOT NEW WRITING TOOLS ---
+{name:"Sudowrite",cat:"writing",price:"paid",icon:"📖",bg:"#FAEEDA",url:"https://sudowrite.com",desc:"Novel aur story likhne ke liye best AI",uses:["Novel writing","Story","Plot generate","Character","Fiction"]},
+{name:"Rytr",cat:"writing",price:"freemium",icon:"✍️",bg:"#EAF3DE",url:"https://rytr.me",desc:"40+ use cases ke liye fast content writing",uses:["Blog","Email","Ad copy","Social media","40+ templates"]},
+{name:"Hypotenuse AI",cat:"writing",price:"freemium",icon:"📝",bg:"#E6F1FB",url:"https://hypotenuse.ai",desc:"E-commerce product descriptions AI se likhna",uses:["Product desc","E-commerce","Bulk content","SEO","Amazon listing"]},
+{name:"Longshot AI",cat:"writing",price:"freemium",icon:"🎯",bg:"#EEEDFE",url:"https://longshot.ai",desc:"Long form SEO blog posts banana",uses:["Long blog","SEO article","Fact check","Research","Plagiarism free"]},
+
+// --- HOT NEW BUSINESS TOOLS ---
+{name:"Fathom AI",cat:"business",price:"freemium",icon:"🎙️",bg:"#EAF3DE",url:"https://fathom.video",desc:"Zoom meetings ka free AI notetaker",uses:["Meeting notes","Free tool","Zoom","Summary","Action items"]},
+{name:"Notta AI",cat:"business",price:"freemium",icon:"📋",bg:"#E6F1FB",url:"https://notta.ai",desc:"Meetings aur audio transcribe karo Hindi mein bhi",uses:["Transcribe","Meeting notes","Hindi support","Audio to text","Summary"]},
+{name:"Reclaim AI",cat:"business",price:"freemium",icon:"📅",bg:"#FAEEDA",url:"https://reclaim.ai",desc:"Calendar AI se manage karo — meetings auto schedule",uses:["Calendar manage","Auto schedule","Focus time","Habits","Google Cal"]},
+{name:"Mem AI",cat:"business",price:"freemium",icon:"🧠",bg:"#EEEDFE",url:"https://mem.ai",desc:"AI-powered notes — sab kuch yaad rakhta hai",uses:["Smart notes","Auto organize","Search notes","Meeting notes","Knowledge base"]},
+{name:"Tome AI",cat:"business",price:"freemium",icon:"📊",bg:"#FAECE7",url:"https://tome.app",desc:"AI se one-click professional presentation",uses:["Presentation","Pitch deck","One click","Beautiful design","Share"]},
+
+// --- HOT NEW CODE TOOLS ---
+{name:"Devin AI",cat:"code",price:"paid",icon:"🤖",bg:"#E6F1FB",url:"https://devin.ai",desc:"World ka pehla AI software engineer",uses:["Full project banana","Auto code","Bug fix","Deploy","Autonomous"]},
+{name:"Pear AI",cat:"code",price:"freemium",icon:"🍐",bg:"#EAF3DE",url:"https://trypear.ai",desc:"Open source AI code editor — free Cursor alternative",uses:["Free editor","AI coding","Open source","VS Code based","Fast"]},
+{name:"Aider AI",cat:"code",price:"free",icon:"⌨️",bg:"#EEEDFE",url:"https://aider.chat",desc:"Terminal mein AI coding assistant — developers ke liye",uses:["Terminal AI","Git integration","Free","Python","Refactor code"]},
+
+// --- HOT NEW 3D/DESIGN TOOLS ---
+{name:"Meshy AI",cat:"design",price:"freemium",icon:"🎮",bg:"#FAEEDA",url:"https://meshy.ai",desc:"Text se 3D models banana — game developers ke liye",uses:["3D model","Game assets","Text to 3D","Free credits","Download"]},
+{name:"Spline AI",cat:"design",price:"freemium",icon:"🌀",bg:"#E6F1FB",url:"https://spline.design",desc:"Browser mein 3D design banana — free",uses:["3D design","Web 3D","Animation","Interactive","Free tool"]},
+{name:"Visily AI",cat:"design",price:"freemium",icon:"📱",bg:"#EAF3DE",url:"https://visily.ai",desc:"Screenshot se wireframe banana — UI designers ke liye",uses:["Wireframe","UI design","Screenshot to design","Figma export","Fast"]},
+
+// --- SEO/MARKETING TOOLS ---
+{name:"Surfer SEO",cat:"business",price:"paid",icon:"🏄",bg:"#E6F1FB",url:"https://surferseo.com",desc:"AI se SEO optimized content banana aur rank karo",uses:["SEO writing","Keyword research","Content score","Rank higher","Blog optimize"]},
+{name:"Semrush AI",cat:"business",price:"paid",icon:"📈",bg:"#FAEEDA",url:"https://semrush.com",desc:"Complete digital marketing AI toolkit",uses:["SEO","Competitor research","Keyword","Social media","PPC"]},
+{name:"Predis AI",cat:"business",price:"freemium",icon:"📱",bg:"#EEEDFE",url:"https://predis.ai",desc:"Social media posts AI se banao — Indian startup",uses:["Instagram post","Reel idea","Caption","Hashtag","Indian startup"]},
 {name:"Grok AI",cat:"chat",price:"freemium",icon:"⚡",bg:"#F1EFE8",url:"https://grok.com",desc:"Elon Musk ka AI — real time X/Twitter data ke saath",uses:["Real-time news","Humor","Coding","Image analyze","Web search"]},
 {name:"DeepSeek",cat:"chat",price:"free",icon:"🔬",bg:"#E6F1FB",url:"https://chat.deepseek.com",desc:"China ka powerful free AI — ChatGPT se sasta",uses:["Coding","Math","Research","Long docs","Free use"]},
 {name:"Kimi AI",cat:"chat",price:"free",icon:"🌙",bg:"#EEEDFE",url:"https://kimi.ai",desc:"China ka Moonshot AI — bahut lamba context",uses:["Long PDF read","Research","Coding","Free GPT-4 level"]},
